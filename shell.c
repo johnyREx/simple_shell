@@ -1,88 +1,83 @@
-#include "shell.h"
+#ifndef SHELL_H
+#define SHELL_H
 
-/**
- * main - a function that displays an intaractive shell prompt
- * @argc: number of arguments passed
- * @argv: pointer to the arguments passsed
- *
- * Return: 0 on success
- */
-int main(int argc, char **argv)
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <stdbool.h>
+
+struct builtin
 {
-	char *line = NULL;
-	char *line_copy = NULL;
-	size_t n = 0;
-	ssize_t nchars_read;
-	const char *delim = "\n";
-	int num_tokens = 0;
-	char *token;
-	int i;
-	int is_interactive;
-	(void)argc;
+	char *env;
+	char *exit;
+} builtin;
 
-	is_interactive = isatty(STDIN_FILENO);
-	while (is_interactive || (nchars_read = getline(&line, &n, stdin)) != -1)
-	{
-		if (is_interactive)
-		{
-			write(STDOUT_FILENO, "#cisfun$ ", 9);
-			nchars_read = getline(&line, &n, stdin);
-			if (nchars_read == -1)
-			{
-				write(STDERR_FILENO, "Exit shell...\n", 13);
-				return (-1);
-			}
-		}
-		line_copy = malloc(sizeof(char) * nchars_read);
-		if (line_copy == NULL)
-		{
-			perror("hsh: Memory allocation error");
-			return (-1);
-		}
-		strcpy(line_copy, line);
-		token = strtok(line, delim);
-		while (token != NULL)
-		{
-			num_tokens++;
-			token = strtok(NULL, delim);
-		}
-		num_tokens = 0;
-		argv = malloc(sizeof(char *) * num_tokens);
-		token = strtok(line_copy, delim);
-		for (i = 0; token != NULL; i++)
-		{
-			argv[i] = malloc(sizeof(char) * strlen(token));
-			strcpy(argv[i], token);
-			token = strtok(NULL, delim);
-		}
-		argv[i] = NULL;
-		if (argv[0] == NULL)
-		{
-			for (i = 0; argv[i] != NULL; i++)
-			{
-				free(argv[i]);
-			}
-			free(argv);
-			continue;
-		}
-		if (handle_builtin_commands(argv))
-		{
-			for (i = 0; argv[i] != NULL; i++)
-			{
-				free(argv[i]);
-			}
-			free(argv);
-			continue;
-		}
-		execute_command(argv);
-		for (i = 0; argv[i] != NULL; i++)
-		{
-			free(argv[i]);
-		}
-		free(argv);
-		free(line);
-		free(line_copy);
-	}
-	read_user_input();
-	return (0);
-}
+struct flags
+{
+	bool interactive;
+} flags;
+
+struct info
+{
+	int final_exit;
+	int ln_count;
+} info;
+
+typedef struct information
+{
+	int argc;
+	char **argv;
+	char *args;
+	char *chemin;
+	unsigned int line_count;
+	int histcount;
+	int linecount_flag;
+	char **environ;
+	int env_changed;
+	char **cmd_entree;
+	int err_num;
+	int readfd;
+	int status;
+	int *fname;
+	int cmd_buf_type;
+} my_info
+
+extern char **environ;
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
+
+#define ENTREE 1024
+#define TAILLE_ENTREE 1024
+#define FLASH -1
+#define LINE 0
+
+int check_builtin(char **cmd, char *buf);
+void display_prompt(void);
+void handle_signal(int m);
+char **tokenize_string(char *line);
+char **test_path_validity(char **path, char *command);
+char *append_path(char *path, char *cmd);
+int handle_builtin(char **cmd, char *line);
+void handle_exit(char **cmd, char *line);
+ssize_t my_input(my_info *info, char **entree, size_t *longueur);
+
+
+int string_compare(const char *strl, const char *str2);
+int string_length(const char *s);
+int string_n_compare(const char *str1, const char *str2, size_t n);
+char *string_duplicate(const char *s);
+char *string_locate(const char *s, char c);
+
+void free_buffer_array(char **buffer);
+
+char *get_path_from_env(void);
+void execute_command(char *path, char **cmd);
+void print_string_to_stdout(char *s);
+int _putchar(char c);
+
+#endif
