@@ -9,18 +9,10 @@
 #include <sys/wait.h>
 
 #define TOK_DELIM " \t\r\n\a"
-extern char **environ;
-
-void shell_interactive(void);
+#define MAX_COMMAND_LENGTH 100
 void shell_no_interactive(void);
-char *read_line(void);
-char **split_line(char *line);
-int execute_args(char **args);
-int new_process(char **args);
-int own_cd();
-int own_env();
-int own_help();
-int own_exit();
 char *read_stream(void);
-
+int handle_builtin_commands(char **argv);
+void execute_command(char **argv);
+void read_user_input(void);
 #endif
