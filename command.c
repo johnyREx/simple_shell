@@ -6,7 +6,7 @@
  * Return: Always return 0
  */
 
-int own_cd()
+int own_cd(void)
 {
 	write(1, "Please wait... \n", 18);
 	return (0);
@@ -18,7 +18,7 @@ int own_cd()
  * Return: Always return 0
  */
 
-int own_env()
+int own_env(void)
 {
 	write(1, "Please wait ... \n", 19);
 	return (0);
@@ -30,7 +30,7 @@ int own_env()
  * Return: Always return 0
  */
 
-int own_help()
+int own_help(void)
 {
 	write(1, "Please wait ... \n", 19);
 	return (0);
@@ -42,7 +42,7 @@ int own_help()
  * Return: Always return 0
  */
 
-int own_exit()
+int own_exit(void)
 {
 	write(1, "Please wait... \n", 18);
 	return (0);
