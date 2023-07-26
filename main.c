@@ -5,7 +5,7 @@
 #include "shell.h"
 
 /**
- * main- Entry point of the shell
+ * main - Entry point of the shell
  * @argc: The number of command line arguments
  * @argv: An array of strings consisting of command line arguments
  *
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
 	else
 	{
-		fprint(stderr, "Usage: %s [file]\n", argv[0]);
+		fprintf(stderr, "Usage: %s [file]\n", argv[0]);
 		return (EXIT_FAILURE);
 	}
 

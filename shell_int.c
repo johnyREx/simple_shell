@@ -82,7 +82,7 @@ char **split_line(char *line)
 
 	if (!tokens)
 	{
-		write(STDE_FILENO, "Allocation error\n", 17);
+		write(STDERR_FILENO, "Allocation error\n", 17);
 		exit(EXIT_FAILURE);
 	}
 
@@ -95,7 +95,7 @@ char **split_line(char *line)
 
 		if (position >= bufsize)
 		{
-			buf_size += buf_size;
+			bufsize += buf_size;
 			tokens = realloc(tokens, bufsize * sizeof(char *));
 
 			if (!tokens)

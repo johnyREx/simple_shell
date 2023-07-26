@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
  * execute_args - Map if command is a biultin or a process
@@ -16,7 +16,7 @@ int execute_args(char **args)
 		"exit"
 	};
 
-	int (*buitlin_func[])(char **) = {
+	int (*builtin_func[])(char **) = {
 		&own_cd,
 		&own_env,
 		&own_help,

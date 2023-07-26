@@ -1,4 +1,4 @@
-#include "shell.c"
+#include "shell.h"
 
 /**
  * read_stream - Read a line from stream
@@ -23,7 +23,7 @@ char *read_stream(void)
 
 	while (1)
 	{
-		characetr = getchar();
+		character = getchar();
 		if (character == EOF)
 		{
 			free(line);
