@@ -17,10 +17,10 @@ char *read_line(void);
 char **split_line(char *line);
 int execute_args(char **args);
 int new_process(char **args);
-int own_cd(void);
-int own_env(void);
-int own_help(void);
-int own_exit(void);
+int own_cd();
+int own_env();
+int own_help();
+int own_exit();
 char *read_stream(void);
 
 #endif
