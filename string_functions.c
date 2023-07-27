@@ -106,7 +106,7 @@ char *string_locate(const char *s, char c)
 	while (*s)
 	{
 		if (*s == c)
-			return (char *)s;
+			return ((char *)s);
 		s++;
 	}
 
