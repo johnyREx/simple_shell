@@ -11,6 +11,6 @@
 void handle_exit(char **cmd, char *line)
 {
 	free(line);
-	free_buffer_array(cmd);
+	free_buffers(cmd);
 	exit(0);
 }

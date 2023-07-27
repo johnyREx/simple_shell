@@ -1,5 +1,7 @@
 #include "shell.h"
 
+void free_buffers(char **buffer);
+
 /**
  * tokenize_string - creates tokens from input string
  * @line: input string
@@ -31,14 +33,21 @@ char **tokenize_string(char *line)
 		bufp++;
 	}
 
-	token = malloc(sizeof(char *) * (token_size + 1));
+	tokens = malloc(sizeof(char *) * (token_size + 1));
+	if (!tokens)
+	{
+		free(buf);
+		return (NULL);
+	}
+
 	token = strtok(buf, delim);
+
 	while (token)
 	{
-		token[index] = string_duplicate(token);
+		tokens[index] = string_duplicate(token);
 		if (tokens[index] == NULL)
 		{
-			free_buffer_array(tokens);
+			free_buffers(tokens);
 			return (NULL);
 		}
 
@@ -46,7 +55,7 @@ char **tokenize_string(char *line)
 		index++;
 	}
 
-	tokens[index] = '\0';
+	tokens[index] = NULL;
 	free(buf);
 
 	return (tokens);

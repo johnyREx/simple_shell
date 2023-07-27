@@ -8,7 +8,7 @@
  * Return: valid path or NULL if not found
  */
 
-char *test_path_validity(char **path, char *command)
+char *path_test_validity(char **path, char *command)
 {
 	int i = 0;
 	char *output_value;

@@ -7,7 +7,7 @@
  * Return: nothing
  */
 
-void free_buffer_array(char **buffer)
+void free_buffers(char **buffer)
 {
 	int i = 0;
 

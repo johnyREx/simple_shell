@@ -27,8 +27,8 @@ int main(int ac, char **av, char *envp[])
 	signal(SIGINT, handle_signal);
 	while (1)
 	{
-		free_buffer_array(command);
-		free_buffer_array(paths);
+		free_buffers(command);
+		free_buffers(paths);
 		free(path_command);
 		display_prompt();
 

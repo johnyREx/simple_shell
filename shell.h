@@ -70,7 +70,6 @@ int handle_builtin(char **cmd, char *line);
 void handle_exit(char **cmd, char *line);
 ssize_t my_input(my_info *info, char **entree, size_t *longueur);
 void print_env(void);
-char *path_test_validity(char **paths, char *command);
 
 
 /* String functions */
@@ -81,13 +80,14 @@ char *string_duplicate(const char *s);
 char *string_locate(const char *s, char c);
 
 /* Free memory */
-void free_buffer_array(char **buffer);
+void free_buffers(char **buffer);
+char *path_test_validity(char **path, char *command);
 
 /* Other functions */
 char *get_path_from_env(void);
 void execute_command(char *path, char **cmd);
 void print_string_to_stdout(char *s);
 int _putchar(char c);
-void free_path_buffer(char **buffer);
+char *path_test_validity(char **path, char *command);
 
 #endif /* SHELL_H */

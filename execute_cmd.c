@@ -20,7 +20,7 @@ void execute_command(char *path, char **cmd)
 		execve(path, cmd, env);
 		perror(path);
 		free(path);
-		free_path_buffer(cmd);
+		free_buffers(cmd);
 		exit(98);
 	}
 	else
