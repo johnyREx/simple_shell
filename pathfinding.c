@@ -15,7 +15,7 @@ char *get_path_from_env(void)
 
 	while (*environment)
 	{
-		if (string_n_cmp(*environment, "PATH=", 5))
+		if (string_n_compare(*environment, "PATH=", 5))
 		{
 			path = *environment;
 			while (*path && x < 5)

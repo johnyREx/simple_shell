@@ -19,7 +19,7 @@ char *append_path(char *path, char *cmd)
 	if (path == NULL)
 		path = "";
 
-	buffer = malloc(sizeof(char) * (string_length(path) + string_lenght(cmd) + 2));
+	buffer = malloc(sizeof(char) * (string_length(path) + string_length(cmd) + 2));
 
 			if (!buffer)
 				return (NULL);

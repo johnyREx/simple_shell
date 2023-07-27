@@ -17,7 +17,7 @@ int main(int ac, char **av, char *envp[])
 	size_t buffer_size = 0;
 	ssize_t line_size = 0;
 	char **command, patha = NULL;
-	(void)evnp;
+	(void)envp;
 	void(av);
 
 	if (ac < 1)
@@ -38,7 +38,7 @@ int main(int ac, char **av, char *envp[])
 		{
 			break;
 		}
-		info.In_count++;
+		info.ln_count++;
 		if (line[line_size - 1] == '\n')
 		{
 			line[line_size - 1] = '\0';
@@ -50,7 +50,7 @@ int main(int ac, char **av, char *envp[])
 		}
 		if (check_builtin(command, line))
 		{
-			path = get_path_env();
+			path = get_path_from__env();
 			paths - tokenize_string(path);
 			path_command = path_test_validity(paths, command[0]);
 		}
@@ -64,7 +64,7 @@ int main(int ac, char **av, char *envp[])
 		}
 	}
 	if (line_size < 0 && flags.interactive)
-		write(STRERR_FILENO, "\n", 1);
+		write(STDERR_FILENO, "\n", 1);
 	free(line);
 	return (0);
 }
