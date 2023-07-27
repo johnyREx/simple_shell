@@ -6,12 +6,12 @@ char **_strtok(char *line, char *delim);
 
 /**
  * token_len - Locates the delimiter index marking the end
- *             of the first token contained within a string.
+ * of the first token contained within a string.
  * @str: The string to be searched.
  * @delim: The delimiter character.
  *
  * Return: The delimiter index marking the end of
- *         the intitial token pointed to be str.
+ * the intitial token pointed to be str.
  */
 int token_len(char *str, char *delim)
 {
@@ -28,7 +28,7 @@ int token_len(char *str, char *delim)
 
 /**
  * count_tokens - Counts the number of delimited
- *                words contained within a string.
+ * words contained within a string.
  * @str: The string to be searched.
  * @delim: The delimiter character.
  *

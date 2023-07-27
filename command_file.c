@@ -5,10 +5,10 @@ int proc_file_commands(char *file_path, int *exe_ret);
 
 /**
  * cant_open - If the file doesn't exist or lacks proper permissions, print
- * a cant open error.
+ * a cant open error msg.
  * @file_path: Path to the supposed file.
  *
- * Return: 127.
+ * Return: error no 127.
  */
 
 int cant_open(char *file_path)
@@ -48,8 +48,8 @@ int cant_open(char *file_path)
  * @exe_ret: Return value of the last executed command.
  *
  * Return: If file couldn't be opened - 127.
- *	   If malloc fails - -1.
- *	   Otherwise the return value of the last command ran.
+ * If allocation fails - -1.
+ * Otherwise the return value of the last command ran.
  */
 int proc_file_commands(char *file_path, int *exe_ret)
 {
