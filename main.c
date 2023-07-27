@@ -42,7 +42,7 @@ int execute(char **args, char **front)
 
 	if (!command || (access(command, F_OK) == -1))
 	{
-		if (errno == EACCESS)
+		if (errno == EACCES)
 			ret = (create_error(args, 126));
 		else
 			ret = (create_error(args, 127));
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
 		return (*exe_ret);
 	}
 
-	if (!isatty(STDIN_FILENI))
+	if (!isatty(STDIN_FILENO))
 	{
 		while (ret != END_OF_FILE && ret != EXIT)
 			ret = handle_args(exe_ret);
