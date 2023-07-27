@@ -14,23 +14,25 @@
 
 struct builtin
 {
-	char *env;
-	char *exit;
+    char *env;
+    char *exit;
 } builtin;
 
+/** Structures */
 struct flags
 {
-	bool interactive;
+    bool interactive;
 } flags;
 
 struct info
 {
-	int final_exit;
-	int ln_count;
+    int final_exit;
+    int ln_count;
 } info;
 
-typedef struct information
+typedef struct informations
 {
+<<<<<<< HEAD:shell.c
 	int argc;
 	char **argv;
 	char *args;
@@ -49,39 +51,62 @@ typedef struct information
 <<<<<<< HEAD
 } my_info
 =======
+=======
+    int argc;
+    char **argv;
+    char *args;
+    char *chemin;
+    unsigned int line_count;
+    int histcount;
+    int linecount_flag;
+    char **environ;
+    int env_changed;
+    char **cmd_entree;
+    int err_num;
+    int readfd;
+    int status;
+    char *fname;
+    int cmd_buf_type;
+>>>>>>> 94c132afa87e47fb87c85a72d3ca585110e2480b:shell.h
 } my_info;
 >>>>>>> c3f8e3667044da196eddccc97df5662330c8f9f7
 
+/* Environment variables */
 extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 
 #define ENTREE 1024
 #define TAILLE_ENTREE 1024
 #define FLASH -1
+#define CMD_NORM 0
 #define LINE 0
 
+/* Builtins */
 int check_builtin(char **cmd, char *buf);
 void display_prompt(void);
 void handle_signal(int m);
 char **tokenize_string(char *line);
-char **test_path_validity(char **path, char *command);
+char *test_path_validity(char **path, char *command);
 char *append_path(char *path, char *cmd);
 int handle_builtin(char **cmd, char *line);
 void handle_exit(char **cmd, char *line);
 ssize_t my_input(my_info *info, char **entree, size_t *longueur);
+void print_env(void);
 
-
-int string_compare(const char *strl, const char *str2);
+/* String functions */
+int string_compare(const char *str1, const char *str2);
 int string_length(const char *s);
 int string_n_compare(const char *str1, const char *str2, size_t n);
 char *string_duplicate(const char *s);
 char *string_locate(const char *s, char c);
 
+/* Free memory */
 void free_buffer_array(char **buffer);
 
+/* Other functions */
 char *get_path_from_env(void);
 void execute_command(char *path, char **cmd);
 void print_string_to_stdout(char *s);
 int _putchar(char c);
 
-#endif
+#endif /* SHELL_H */
