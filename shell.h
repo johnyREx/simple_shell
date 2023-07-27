@@ -32,7 +32,6 @@ struct info
 
 typedef struct informations
 {
-<<<<<<< HEAD:shell.c
 	int argc;
 	char **argv;
 	char *args;
@@ -48,28 +47,7 @@ typedef struct informations
 	int status;
 	int *fname;
 	int cmd_buf_type;
-<<<<<<< HEAD
-} my_info
-=======
-=======
-    int argc;
-    char **argv;
-    char *args;
-    char *chemin;
-    unsigned int line_count;
-    int histcount;
-    int linecount_flag;
-    char **environ;
-    int env_changed;
-    char **cmd_entree;
-    int err_num;
-    int readfd;
-    int status;
-    char *fname;
-    int cmd_buf_type;
->>>>>>> 94c132afa87e47fb87c85a72d3ca585110e2480b:shell.h
 } my_info;
->>>>>>> c3f8e3667044da196eddccc97df5662330c8f9f7
 
 /* Environment variables */
 extern char **environ;
@@ -92,6 +70,8 @@ int handle_builtin(char **cmd, char *line);
 void handle_exit(char **cmd, char *line);
 ssize_t my_input(my_info *info, char **entree, size_t *longueur);
 void print_env(void);
+char *path_test_validity(char **paths, char *command);
+
 
 /* String functions */
 int string_compare(const char *str1, const char *str2);
@@ -108,5 +88,6 @@ char *get_path_from_env(void);
 void execute_command(char *path, char **cmd);
 void print_string_to_stdout(char *s);
 int _putchar(char c);
+void free_path_buffer(char **buffer);
 
 #endif /* SHELL_H */

@@ -2,10 +2,10 @@
 
 /**
  * string_compare - cpmpares two strings
- * @str1: first srtig to compare
+ * @str1: first srting to compare
  * @str2: second string to compare
  *
- * Return: the diffrience betwee the two srtings
+ * Return: the diffrience between the two srtings
  */
 
 int string_compare(const char *str1, const char *str2)
@@ -23,7 +23,7 @@ int string_compare(const char *str1, const char *str2)
 
 /**
  * string_length - calculates the length of a string
- * @s: the string
+ * @s: the string passed
  *
  * Return: the length of the string passed
  */
@@ -32,7 +32,7 @@ int string_length(const char *s)
 {
 	int count = 0;
 
-	while (*S != '\0')
+	while (*s != '\0')
 	{
 		count++;
 		s++;
@@ -107,13 +107,10 @@ char *string_locate(const char *s, char c)
 	{
 		if (*s == c)
 		{
-			return ((char *)s);
+			return (s);
 			s++;
 		}
-		if (!c)
-		{
-			return ((char *)s);
 			return (NULL);
-		}
 	}
+	
 }
