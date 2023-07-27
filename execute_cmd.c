@@ -17,11 +17,19 @@ void execute_command(char *path, char **cmd)
 	child_pid = fork();
 	if (child_pid < 0)
 	{
-		execve(path, cmd, env);
-		perror(path);
-		free(path);
-		free_buffers(cmd);
-		exit(98);
+		perror("fork");
+		return;
+	}
+
+	
+	if (child_pid == 0)
+	{
+		if (execve(path, cmd, env) == -1)
+		{
+			perror("Execution Error");
+			free_buffers(cmd);
+			exit(98);
+		}
 	}
 	else
 	{
