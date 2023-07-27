@@ -14,8 +14,8 @@ void execute_command(char *path, char **cmd)
 	char **env = environ;
 	int status;
 
-	chid_pid = fork();
-	if (chin_pid < 0)
+	child_pid = fork();
+	if (child_pid < 0)
 	{
 		execve(path, cmd, env);
 		perror(path);

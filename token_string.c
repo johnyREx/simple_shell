@@ -27,7 +27,7 @@ char **tokenize_string(char *line)
 		}
 
 		else if (string_locate(delim, *bufp) == NULL && flag == 1)
-			glag = 0;
+			flag = 0;
 		bufp++;
 	}
 

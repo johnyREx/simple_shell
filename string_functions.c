@@ -49,7 +49,7 @@ int string_length(const char *s)
  * Return: the difference between the two strings
  */
 
-int string_n_compare(const char *str1, cost char *str2, size_t n)
+int string_n_compare(const char *str1, const char *str2, size_t n)
 {
 	size_t i;
 

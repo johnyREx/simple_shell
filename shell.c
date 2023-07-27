@@ -46,7 +46,11 @@ typedef struct information
 	int status;
 	int *fname;
 	int cmd_buf_type;
+<<<<<<< HEAD
 } my_info
+=======
+} my_info;
+>>>>>>> c3f8e3667044da196eddccc97df5662330c8f9f7
 
 extern char **environ;
 extern __sighandler_t signal(int __sig, __sighandler_t __handler);
