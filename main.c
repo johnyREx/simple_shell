@@ -29,8 +29,7 @@ int execute(char **args, char **front)
 {
 	pid_t child_pid;
 	int status, flag = 0;
-
-	ret = 0;
+	int ret = 0;
 
 	char *command = args[0];
 
@@ -91,7 +90,7 @@ int main(int argc, char *argv[])
 	int *exe_ret = &retn;
 	char *prompt = "$ ", *new_line = "\n";
 
-	name = argc[0];
+	name = argv[0];
 	hist = 1;
 	aliases = NULL;
 	signal(SIGINT, sig_handler);
